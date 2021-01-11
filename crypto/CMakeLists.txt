@@ -457,6 +457,8 @@ SET_TARGET_PROPERTIES(crypto PROPERTIES LINKER_LANGUAGE C)
 
 if(NOT WIN32 AND NOT ANDROID)
   target_link_libraries(crypto pthread)
+elseif(WIN32)
+  target_link_libraries(crypto ws2_32)
 endif()
 
 # Every target depends on crypto, so we add libcxx as a dependency here to
