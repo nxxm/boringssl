@@ -19,8 +19,8 @@ set(version_config "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake")
 set(project_config "${generated_dir}/${PROJECT_NAME}Config.cmake")
 set(targets_export_name "${PROJECT_NAME}Targets")
 set(namespace "${PROJECT_NAME}::")
- message(VERBOSE "***************************************************************************************")
- message(VERBOSE "${PROJECT_NAME}")
+ message( "***************************************************************************************")
+ message( "${PROJECT_NAME}")
 
 
 
@@ -704,5 +704,5 @@ install(
   DESTINATION "${config_install_dir}"
   )
 
- message(VERBOSE "***************************************************************************************")
- message(VERBOSE "${PROJECT_NAME}")
+ message("***************************************************************************************")
+ message("${PROJECT_NAME}")
