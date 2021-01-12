@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 3.3)
 
+# Report AppleClang separately from Clang. Their version numbers are different.
+# https://cmake.org/cmake/help/v3.0/policy/CMP0025.html
+if(POLICY CMP0025)
+  cmake_policy(SET CMP0025 NEW)
+endif()
+
 # Defer enabling C and CXX languages.
 project(BoringSSL VERSION 0.0.0 LANGUAGES NONE)
 
