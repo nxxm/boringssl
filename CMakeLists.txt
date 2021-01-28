@@ -19,9 +19,7 @@ set(version_config "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake")
 set(project_config "${generated_dir}/${PROJECT_NAME}Config.cmake")
 set(targets_export_name "${PROJECT_NAME}Targets")
 set(namespace "${PROJECT_NAME}::")
- message( "***************************************************************************************")
- message( "${PROJECT_NAME}")
-
+find_package(Threads)
 
 
 if(WIN32)
@@ -581,6 +579,7 @@ if(USE_CUSTOM_LIBCXX)
     -DLIBCXX_BUILDING_LIBCXXABI
   )
   target_link_libraries(libcxx libcxxabi)
+  target_link_libraries(Threads::Threads)
 endif()
 
 # Add minimal googletest targets. The provided one has many side-effects, and
@@ -704,5 +703,3 @@ install(
   DESTINATION "${config_install_dir}"
   )
 
- message("***************************************************************************************")
- message("${PROJECT_NAME}")

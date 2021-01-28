@@ -22,7 +22,7 @@ add_executable(
 )
 
 add_dependencies(bssl global_target)
-
+target_link_libraries(Threads::Threads)
 if(WIN32)
   target_link_libraries(bssl ws2_32)
 endif()

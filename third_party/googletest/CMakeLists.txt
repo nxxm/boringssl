@@ -141,7 +141,7 @@ if (DEFINED CMAKE_VERSION AND NOT "${CMAKE_VERSION}" VERSION_LESS "2.8.11")
     "$<INSTALL_INTERFACE:$<INSTALL_PREFIX>/${CMAKE_INSTALL_INCLUDEDIR}>")
 endif()
 target_link_libraries(gtest_main PUBLIC gtest)
-
+target_link_libraries(Threads::Threads)
 ########################################################################
 #
 # Install rules

@@ -454,7 +454,7 @@ if(FIPS_DELOCATE OR FIPS_SHARED)
 endif()
 
 SET_TARGET_PROPERTIES(crypto PROPERTIES LINKER_LANGUAGE C)
-
+target_link_libraries(Threads::Threads)
 if(NOT WIN32 AND NOT ANDROID)
   target_link_libraries(crypto pthread)
 elseif(WIN32)
@@ -477,6 +477,7 @@ add_executable(
 )
 
 target_link_libraries(urandom_test test_support_lib boringssl_gtest crypto)
+target_link_libraries(Threads::Threads)
 
 add_dependencies(urandom_test global_target)
 add_dependencies(all_tests urandom_test)
@@ -554,6 +555,7 @@ add_executable(
 add_dependencies(crypto_test global_target)
 
 target_link_libraries(crypto_test test_support_lib boringssl_gtest crypto)
+target_link_libraries(Threads::Threads)
 if(WIN32)
   target_link_libraries(crypto_test ws2_32)
 endif()

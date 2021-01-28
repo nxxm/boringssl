@@ -10,6 +10,7 @@ add_library(
   wycheproof_util.cc
 )
 
+target_link_libraries(Threads::Threads)
 if (LIBUNWIND_FOUND)
   target_compile_options(test_support_lib PRIVATE ${LIBUNWIND_CFLAGS_OTHER})
   target_include_directories(test_support_lib PRIVATE ${LIBUNWIND_INCLUDE_DIRS})
