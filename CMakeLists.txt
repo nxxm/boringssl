@@ -19,7 +19,6 @@ set(version_config "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake")
 set(project_config "${generated_dir}/${PROJECT_NAME}Config.cmake")
 set(targets_export_name "${PROJECT_NAME}Targets")
 set(namespace "${PROJECT_NAME}::")
-find_package(Threads)
 
 
 if(WIN32)
@@ -95,6 +94,8 @@ foreach(VAR CMAKE_C_FLAGS CMAKE_CXX_FLAGS CMAKE_ASM_FLAGS)
   string(REGEX REPLACE "(^| )[/-]DNDEBUG( |$)" " " "${VAR}_RELWITHASSERTS"
          "${${VAR}_RELEASE}")
 endforeach()
+
+find_package(Threads)
 
 if(BORINGSSL_PREFIX AND BORINGSSL_PREFIX_SYMBOLS)
   add_definitions(-DBORINGSSL_PREFIX=${BORINGSSL_PREFIX})
