@@ -44,7 +44,6 @@ add_library(
 add_dependencies(ssl global_target)
 
 target_link_libraries(ssl crypto)
-target_link_libraries(Threads::Threads)
 
 add_executable(
   ssl_test
@@ -59,7 +58,6 @@ add_executable(
 add_dependencies(ssl_test global_target)
 
 target_link_libraries(ssl_test test_support_lib boringssl_gtest ssl crypto)
-target_link_libraries(Threads::Threads)
 if(WIN32)
   target_link_libraries(ssl_test ws2_32)
 endif()

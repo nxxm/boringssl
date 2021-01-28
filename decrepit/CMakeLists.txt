@@ -23,7 +23,7 @@ add_library(
 )
 
 add_dependencies(decrepit global_target)
-target_link_libraries(Threads::Threads)
+
 target_link_libraries(decrepit crypto ssl)
 
 add_executable(
@@ -42,7 +42,6 @@ add_dependencies(decrepit_test global_target)
 
 target_link_libraries(decrepit_test test_support_lib boringssl_gtest decrepit
                       crypto)
-target_link_libraries(Threads::Threads)
 if(WIN32)
   target_link_libraries(decrepit_test ws2_32)
 endif()
