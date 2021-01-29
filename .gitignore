@@ -1,12 +1,14 @@
-build/
+/build*
 build32/
 build64/
 ssl/test/runner/runner
 *.pyc
-*.swp
+.*.swp
 *.swo
 doc/*.html
 doc/doc.css
+.vscode/
+\.DS_Store
 
 util/bot/android_ndk
 util/bot/android_sdk/public
