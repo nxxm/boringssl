@@ -24,7 +24,7 @@ add_library(
 
 add_dependencies(decrepit global_target)
 
-target_link_libraries(decrepit crypto ssl)
+target_link_libraries(decrepit crypto ssl Threads::Threads)
 
 add_executable(
   decrepit_test
@@ -41,8 +41,18 @@ add_executable(
 add_dependencies(decrepit_test global_target)
 
 target_link_libraries(decrepit_test test_support_lib boringssl_gtest decrepit
-                      crypto)
+                      crypto Threads::Threads)
 if(WIN32)
   target_link_libraries(decrepit_test ws2_32)
 endif()
 add_dependencies(all_tests decrepit_test)
+
+### Install ###
+install(
+  TARGETS decrepit
+  EXPORT "${targets_export_name}"
+  LIBRARY DESTINATION "lib"
+  ARCHIVE DESTINATION "lib"
+  RUNTIME DESTINATION "bin"
+  INCLUDES DESTINATION "${include_install_dir}"
+  )

@@ -462,8 +462,9 @@ endif()
 
 SET_TARGET_PROPERTIES(crypto PROPERTIES LINKER_LANGUAGE C)
 
-if(NOT WIN32 AND NOT ANDROID)
-  target_link_libraries(crypto pthread)
+target_link_libraries(crypto Threads::Threads)
+if(WIN32)
+  target_link_libraries(crypto ws2_32)
 endif()
 
 # Every target depends on crypto, so we add libcxx as a dependency here to
@@ -557,9 +558,18 @@ add_executable(
 )
 
 add_dependencies(crypto_test global_target)
-
-target_link_libraries(crypto_test test_support_lib boringssl_gtest crypto)
+target_link_libraries(crypto_test test_support_lib boringssl_gtest crypto Threads::Threads)
 if(WIN32)
   target_link_libraries(crypto_test ws2_32)
 endif()
 add_dependencies(all_tests crypto_test)
+
+### Install ###
+install(
+  TARGETS crypto
+  EXPORT "${targets_export_name}"
+  LIBRARY DESTINATION "lib"
+  ARCHIVE DESTINATION "lib"
+  RUNTIME DESTINATION "bin"
+  INCLUDES DESTINATION "${include_install_dir}"
+  )
