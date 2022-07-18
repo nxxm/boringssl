@@ -11,9 +11,11 @@
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION
  * OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. */
-
+  
+#include <iostream>
 #include <string>
-#include <vector>
+#include <vector> 
+#include <iostream>
 
 #include <openssl/crypto.h>
 #include <openssl/err.h>
@@ -88,6 +90,7 @@ static tool_func_t FindTool(const std::string &name) {
 }
 
 int main(int argc, char **argv) {
+  std::cout << "Hello World" << std::endl;
 #if defined(OPENSSL_WINDOWS)
   // Read and write in binary mode. This makes bssl on Windows consistent with
   // bssl on other platforms, and also makes it consistent with MSYS's commands
