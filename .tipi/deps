@@ -1,0 +1,11 @@
+{
+  "tipi-build/cute" : { "@": "2.0.0-EH" },
+  "tipi-build/zip" : { "@" : "feature/set_time_write_utc" },
+  "tipi-build/efsw" : { "@" : "1.1.2-tipi"
+     , "x:macos-cxx17" : ["src/efsw/FileWatcherWin32.cpp", "src/efsw/FileWatcherInotify.cpp", "src/efsw/platform/win"]
+     , "x:clang-cxx17" : ["src/efsw/FileWatcherWin32.cpp", "src/efsw/FileWatcherInotify.cpp", "src/efsw/platform/win"]
+     , "x:linux-cxx17" : ["src/efsw/FileWatcherWin32.cpp", "src/efsw/FileWatcherFSEvents.cpp", "src/efsw/FileWatcherKqueue.cpp", "src/efsw/platform/win"]
+     , "x:windows-cxx17" : ["src/efsw/FileWatcherInotify.cpp", "src/efsw/FileWatcherFSEvents.cpp", "src/efsw/FileWatcherKqueue.cpp", "src/efsw/platform/posix"]
+     , "x:vs-16-2019-win64-cxx17" : ["src/efsw/FileWatcherInotify.cpp", "src/efsw/FileWatcherFSEvents.cpp", "src/efsw/FileWatcherKqueue.cpp", "src/efsw/platform/posix"]
+   }
+}
