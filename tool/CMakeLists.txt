@@ -1,5 +1,8 @@
 include_directories(../include)
 
+find_package(tipi-build_efsw CONFIG REQUIRED)
+find_package(tipi-build_zip CONFIG REQUIRED)
+
 add_executable(
   bssl
 
@@ -22,7 +25,7 @@ add_executable(
 )
 
 add_dependencies(bssl global_target)
-target_link_libraries(bssl Threads::Threads)
+target_link_libraries(bssl Threads::Threads tipi-build_efsw::efsw tipi-build_zip::zip)
 if(WIN32)
   target_link_libraries(bssl ws2_32)
 endif()

@@ -16,7 +16,13 @@
 #include <string>
 #include <vector> 
 #include <iostream>
+#include <efsw/efsw.hpp>
+#include <zip.h>
 
+
+class file_changes_monitor : public efsw::FileWatchListener {}; // Depend on the lib for linker errors if not present as .o/.a files
+
+ 
 #include <openssl/crypto.h>
 #include <openssl/err.h>
 #include <openssl/ssl.h>
@@ -90,7 +96,10 @@ static tool_func_t FindTool(const std::string &name) {
 }
 
 int main(int argc, char **argv) {
-  std::cout << "Hello World" << std::endl;
+  std::cout << "Zipping for fun" << std::endl;
+
+  struct zip_t *zip = zip_stream_open(NULL, 0, ZIP_DEFAULT_COMPRESSION_LEVEL, 'w');
+  zip_stream_close(zip);
 #if defined(OPENSSL_WINDOWS)
   // Read and write in binary mode. This makes bssl on Windows consistent with
   // bssl on other platforms, and also makes it consistent with MSYS's commands
