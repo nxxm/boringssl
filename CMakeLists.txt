@@ -251,6 +251,7 @@ elseif(MSVC)
       "C5027" # move assignment operator was implicitly defined as deleted
       "C5045" # Compiler will insert Spectre mitigation for memory load if
               # /Qspectre switch specified
+      "C5039" # accepts noexcept code that may throw from C boundaries
       )
   set(MSVC_LEVEL4_WARNINGS_LIST
       # See https://connect.microsoft.com/VisualStudio/feedback/details/1217660/warning-c4265-when-using-functional-header
@@ -260,8 +261,8 @@ elseif(MSVC)
                             ${MSVC_DISABLED_WARNINGS_LIST})
   string(REPLACE "C" " -w4" MSVC_LEVEL4_WARNINGS_STR
                             ${MSVC_LEVEL4_WARNINGS_LIST})
-  set(CMAKE_C_FLAGS   "-utf-8 -Wall -WX ${MSVC_DISABLED_WARNINGS_STR} ${MSVC_LEVEL4_WARNINGS_STR}")
-  set(CMAKE_CXX_FLAGS "-utf-8 -Wall -WX ${MSVC_DISABLED_WARNINGS_STR} ${MSVC_LEVEL4_WARNINGS_STR}")
+  set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -utf-8 -Wall -WX ${MSVC_DISABLED_WARNINGS_STR} ${MSVC_LEVEL4_WARNINGS_STR}")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -utf-8 -Wall -WX ${MSVC_DISABLED_WARNINGS_STR} ${MSVC_LEVEL4_WARNINGS_STR}")
 endif()
 
 if(WIN32)
