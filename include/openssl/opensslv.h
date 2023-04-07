@@ -19,9 +19,9 @@
 
 /* Backward compatibility code for the stock FindOpenSSL.cmake from CMake */
 #ifndef OPENSSL_IS_BORINGSSL
-   #define OPENSSL_IS_BORINGSSL
+#define OPENSSL_IS_BORINGSSL
 #endif
 
 #ifndef OPENSSL_VERSION_NUMBER
-   #define OPENSSL_VERSION_NUMBER 0x1010107f
+#define OPENSSL_VERSION_NUMBER 0x1010107f
 #endif
