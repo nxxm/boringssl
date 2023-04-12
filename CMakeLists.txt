@@ -9,6 +9,9 @@ endif()
 # Defer enabling C and CXX languages.
 project(BoringSSL VERSION 0.0.0 LANGUAGES NONE)
 
+# BoringSSL disguise itself in OpenSSL and to be found by FindOpenSSL.camke it needs to have no d a the end of "crypto**d**.lib / .so" name.
+set (CMAKE_DEBUG_POSTFIX "" CACHE STRING "Disable the unhelpful d at end of library filenames" FORCE)
+
 ###############
 ### Install ###
 ###############
