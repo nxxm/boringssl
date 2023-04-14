@@ -1,0 +1,6 @@
+{ 
+    "u" : true
+    , "packages" : ["OpenSSL"]
+    , "targets" : ["OpenSSL::SSL", "OpenSSL::Crypto"]
+    , "find_mode" : "MODULE"
+}
