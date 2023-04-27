@@ -255,6 +255,7 @@ elseif(MSVC)
       "C5045" # Compiler will insert Spectre mitigation for memory load if
               # /Qspectre switch specified
       "C5039" # accepts noexcept code that may throw from C boundaries
+      "C4255" # accepts autoconversion from func() to func(void) in C
       )
   set(MSVC_LEVEL4_WARNINGS_LIST
       # See https://connect.microsoft.com/VisualStudio/feedback/details/1217660/warning-c4265-when-using-functional-header
