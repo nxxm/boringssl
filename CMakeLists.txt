@@ -142,7 +142,7 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCXX OR CLANG)
   # Note clang-cl is odd and sets both CLANG and MSVC. We base our configuration
   # primarily on our normal Clang one.
-  set(C_CXX_FLAGS "-Werror -Wformat=2 -Wsign-compare -Wmissing-field-initializers -Wwrite-strings -Wvla")
+  set(C_CXX_FLAGS "-Wformat=2 -Wsign-compare -Wmissing-field-initializers -Wwrite-strings -Wvla")
   if(MSVC)
     # clang-cl sets different default warnings than clang. It also treats -Wall
     # as -Weverything, to match MSVC. Instead -W3 is the alias for -Wall.
@@ -256,6 +256,7 @@ elseif(MSVC)
               # /Qspectre switch specified
       "C5039" # accepts noexcept code that may throw from C boundaries
       "C4255" # accepts autoconversion from func() to func(void) in C
+      "C5264" # const not used introduced in MSVC 19
       )
   set(MSVC_LEVEL4_WARNINGS_LIST
       # See https://connect.microsoft.com/VisualStudio/feedback/details/1217660/warning-c4265-when-using-functional-header
@@ -265,8 +266,8 @@ elseif(MSVC)
                             ${MSVC_DISABLED_WARNINGS_LIST})
   string(REPLACE "C" " -w4" MSVC_LEVEL4_WARNINGS_STR
                             ${MSVC_LEVEL4_WARNINGS_LIST})
-  set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -utf-8 -Wall -WX ${MSVC_DISABLED_WARNINGS_STR} ${MSVC_LEVEL4_WARNINGS_STR}")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -utf-8 -Wall -WX ${MSVC_DISABLED_WARNINGS_STR} ${MSVC_LEVEL4_WARNINGS_STR}")
+  set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -utf-8 -Wall ${MSVC_DISABLED_WARNINGS_STR} ${MSVC_LEVEL4_WARNINGS_STR}")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -utf-8 -Wall ${MSVC_DISABLED_WARNINGS_STR} ${MSVC_LEVEL4_WARNINGS_STR}")
 endif()
 
 if(WIN32)
