@@ -257,6 +257,7 @@ elseif(MSVC)
       "C5039" # accepts noexcept code that may throw from C boundaries
       "C4255" # accepts autoconversion from func() to func(void) in C
       "C5264" # const not used introduced in MSVC 19
+      "C5262" # implicit fallthrough warning introduced in MSVC 19
       )
   set(MSVC_LEVEL4_WARNINGS_LIST
       # See https://connect.microsoft.com/VisualStudio/feedback/details/1217660/warning-c4265-when-using-functional-header
