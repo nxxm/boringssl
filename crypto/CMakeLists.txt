@@ -38,7 +38,7 @@ if(NOT OPENSSL_NO_ASM)
     endif()
 
     if(EMSCRIPTEN)
-      set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -Wa,-g0")
+      set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -g0")
     endif()
 
     # CMake does not add -isysroot and -arch flags to assembly.
