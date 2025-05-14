@@ -137,11 +137,7 @@ endif()
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
   set(EMSCRIPTEN 1)
-  add_compile_options(
-    $<$<COMPILE_LANGUAGE:ASM>:-g0>
-  )
   add_compile_options(-Wno-unused-command-line-argument)
-
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CLANG)
