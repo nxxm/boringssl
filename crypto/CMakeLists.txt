@@ -37,6 +37,10 @@ if(NOT OPENSSL_NO_ASM)
       set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -Wa,-g")
     endif()
 
+    if(EMSCRIPTEN)
+      set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -Wa,-g0")
+    endif()
+
     # CMake does not add -isysroot and -arch flags to assembly.
     if(APPLE)
       if(CMAKE_OSX_SYSROOT)
