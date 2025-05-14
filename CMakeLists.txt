@@ -182,9 +182,6 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CLANG)
     if(APPLE)
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
     endif()
-    if(NOT BORINGSSL_ALLOW_CXX_RUNTIME)
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions -fno-rtti")
-    endif()
   endif()
 
   # In GCC, -Wmissing-declarations is the C++ spelling of -Wmissing-prototypes
@@ -595,6 +592,7 @@ endif()
 
 # Add minimal googletest targets. The provided one has many side-effects, and
 # googletest has a very straightforward build.
+
 add_library(boringssl_gtest third_party/googletest/src/gtest-all.cc)
 target_include_directories(boringssl_gtest PRIVATE third_party/googletest)
 
